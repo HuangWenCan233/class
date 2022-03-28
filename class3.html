@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 500px;
+            height: 280px;
+            margin: 0 auto;
+        }
+        
+        .box .pic {
+            width: 280px;
+            overflow: hidden;
+            position: absolute;
+            right: -60%;
+            top: 0;
+        }
+        
+        .box div img {
+            position: absolute;
+        }
+        
+        .box>img,
+        .pic {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .layer {
+            /* display: none; */
+            height: 140px;
+            width: 140px;
+            background: lightskyblue;
+            opacity: .3;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="layer"></div>
+        <img src="../SNPG.jpg" alt="">
+        <div class="pic"><img src="../SNPG.jpg" alt=""></div>
+    </div>
+    <script>
+        let box = document.querySelector('.box');
+        let small = box.querySelector('img');
+        let view = box.querySelector('.pic');
+        let big = box.querySelector('.pic img');
+        let layer = box.querySelector('.layer');
+        let bigX = big.offsetWidth - view.offsetWidth;
+        let bigY = big.offsetHeight - view.offsetHeight;
+        let smallX = small.offsetWidth - layer.offsetWidth;
+        let smallY = small.offsetHeight - layer.offsetHeight;
+        box.onmousemove = function(e) {
+            console.log(e.clientX, box.offsetLeft)
+            let x =
+                e.clientX - box.offsetLeft - layer.offsetWidth / 2;
+            let y =
+                e.clientY - box.offsetTop - layer.offsetHeight / 2;
+            x = x <= 0 ? 0 : x;
+            y = y <= 0 ? 0 : y;
+            x = x > small.offsetWidth - layer.offsetWidth ?
+                small.offsetWidth - layer.offsetWidth : x;
+            y = y > small.offsetHeight - layer.offsetHeight ?
+                small.offsetHeight - layer.offsetHeight : y;
+            layer.style.left = x + 'px';
+            layer.style.top = y + 'px';
+            big.style.left = (-x * bigX / smallX) + 'px';
+            big.style.top = (-y * bigY / smallY) + 'px';
+
+        }
+    </script>
+</body>
+
+</html>

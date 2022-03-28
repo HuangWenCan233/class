@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>距2022年春节</div>
+    <div class="cont">？天？时？分？秒</div>
+    <script>
+        let cont = document.querySelector('.cont');
+        let spr = new Date('2022/2/1');
+        // setInterval()
+
+        function now() {
+            let now = new Date;
+            let nowTime = now.getTime() - spr.getTime();
+            let days = nowTime / 1000 / 60 / 60 / 24;
+            let hours = nowTime / 1000 / 60 / 60 % 24;
+            let minutes = nowTime / 1000 / 60 % 60;
+            let seconds = nowTime / 1000 % 60;
+        }
+
+        function change(str) {
+            str = str.replace(/\？/g, 1)
+        }
+        console.log(change, change(cont.innerHTML))
+    </script>
+</body>
+
+</html>
