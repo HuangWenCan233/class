@@ -1,0 +1,53 @@
+.banner {
+    width: 500px;
+    height: 280px;
+    background: #ccc;
+}
+
+.banner ul,
+.banner ul li {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner img {
+    height: 280px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.big img {
+    height: 560px;
+}
+
+.banner .view {
+    position: absolute;
+    overflow: hidden;
+    right: -60%;
+    top: 0;
+    width: 280px;
+    height: 280px;
+    background: #000;
+}
+
+.view .big {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000px;
+    height: 560px;
+    overflow: hidden;
+    background: #ccc;
+}
+
+.banner .layer {
+    height: 140px;
+    width: 140px;
+    background: lightskyblue;
+    opacity: .3;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
